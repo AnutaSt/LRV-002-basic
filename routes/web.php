@@ -17,12 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/groups', [\App\Http\Controllers\GroupController::class, 'index']);
 
-Route::get('/todo', [\App\Http\Controllers\TodoController::class, 'index'])
-    ->name('todo');
-Route::get('/todo/{id}', [\App\Http\Controllers\TodoController::class, 'show'])
-    ->name('show');
-Route::post('/todo/create', [\App\Http\Controllers\TodoController::class, 'store'])
-    ->name('create');
-Route::get('/todo//delete/{id}', [\App\Http\Controllers\TodoController::class, 'destroy'])
-    ->name('delete');
+Route::post('/groups', [\App\Http\Controllers\GroupController::class, 'store']);
+
+Route::get('/groups/create', [\App\Http\Controllers\GroupController::class, 'create']);
+
+Route::get('/groups/{group}', [\App\Http\Controllers\GroupController::class, 'show']);
+
+Route::post('/groups/{group}/students', [\App\Http\Controllers\StudentController::class, 'store']);
+
+Route::get('/groups/{group}/students/create', [\App\Http\Controllers\StudentController::class, 'create']);
+
+Route::get('/groups/{group}/students/{student}', [\App\Http\Controllers\StudentController::class, 'show']);
+
+
+
+
+
